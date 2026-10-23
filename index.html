@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#7a1f16">
+<title>VAN KA RESTAU — Restaurant malien</title>
+<style>
+:root{--primary:#7a1f16;--primary2:#a52d1f;--gold:#d89b32;--cream:#fff8ed;--dark:#1d1714;--muted:#766b64;--white:#fff;--green:#237a4b;--red:#b3261e;--shadow:0 10px 30px rgba(42,22,12,.12);--radius:18px}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--cream);color:var(--dark)}
+button,input,select,textarea{font:inherit}button{cursor:pointer}.topbar{background:var(--dark);color:#fff;padding:8px 16px;text-align:center;font-size:13px}
+header{position:sticky;top:0;z-index:50;background:#fff;box-shadow:0 2px 15px #00000012}.nav{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;color:var(--primary);font-size:20px}.logoMark{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--primary);color:#fff;border:3px solid var(--gold)}
+.navlinks{display:flex;gap:6px;align-items:center}.navlinks button,.mobileNav button{border:0;background:transparent;padding:10px 12px;border-radius:12px;color:var(--dark);font-weight:700}.navlinks button:hover{background:#f5eee6}.cartBtn{background:var(--primary)!important;color:#fff!important}
+.hero{max-width:1100px;margin:20px auto;padding:34px 18px;display:grid;grid-template-columns:1.1fr .9fr;gap:25px;align-items:center}.heroText h1{font-size:clamp(38px,7vw,72px);line-height:.98;margin:8px 0 18px}.heroText h1 span{color:var(--primary)}.heroText p{font-size:18px;color:var(--muted);line-height:1.6}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.btn{border:0;border-radius:13px;padding:13px 17px;font-weight:800}.btnPrimary{background:var(--primary);color:#fff}.btnGold{background:var(--gold);color:#251a10}.btnLight{background:#fff;border:1px solid #eadbca}
+.heroCard{min-height:300px;border-radius:28px;background:linear-gradient(135deg,#7a1f16,#b94d29 55%,#d89b32);display:flex;align-items:end;padding:25px;color:#fff;box-shadow:var(--shadow);position:relative;overflow:hidden}.heroCard:before{content:"🍛";font-size:150px;position:absolute;right:25px;top:35px;transform:rotate(-7deg)}.heroCard div{position:relative;z-index:2;background:#0006;border-radius:15px;padding:13px}
+.section{max-width:1100px;margin:0 auto;padding:25px 16px 55px}.sectionHead{display:flex;justify-content:space-between;align-items:end;gap:10px;margin-bottom:18px}.section h2{font-size:30px;margin:0 0 5px}.muted{color:var(--muted)}
+.categories{display:flex;gap:8px;overflow:auto;padding:3px 0 12px}.chip{white-space:nowrap;border:1px solid #eadbca;background:#fff;padding:9px 13px;border-radius:999px;font-weight:700}.chip.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:1px solid #f0e4d7}.foodImg{height:175px;display:grid;place-items:center;font-size:75px;background:linear-gradient(135deg,#fff0d7,#f8d3a3);overflow:hidden}.foodImg img{width:100%;height:100%;object-fit:cover;display:block}.dishPhotoPreview{width:110px;height:110px;border-radius:14px;object-fit:cover;border:1px solid #eadbca;background:#fff0d7}.adminDishThumb{width:72px;height:72px;overflow:hidden;display:grid;place-items:center;flex:0 0 72px;border-radius:12px;object-fit:cover;background:#fff0d7;flex:none}.adminDishInfo{display:flex;align-items:center;gap:12px;min-width:0}.cardBody{padding:15px}.cardBody h3{margin:0 0 5px}.price{font-weight:900;color:var(--primary);font-size:18px}.cardBottom{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:12px}.smallBtn{border:0;border-radius:10px;padding:9px 12px;font-weight:800;background:var(--primary);color:#fff}.badge{font-size:12px;padding:5px 8px;border-radius:999px;background:#e8f6ee;color:var(--green);font-weight:800}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:18px}.infoBox{background:#fff;border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}.infoBox h3{margin-top:0}
+footer{background:var(--dark);color:#fff;padding:35px 16px}.footerInner{max-width:1100px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:25px}
+.modal{position:fixed;inset:0;background:#0008;z-index:100;display:none;align-items:flex-end;justify-content:center}.modal.show{display:flex}.modalBox{background:#fff;width:min(650px,100%);max-height:92vh;overflow:auto;border-radius:24px 24px 0 0;padding:20px}.modalHead{display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:#fff;z-index:2}.close{border:0;background:#f1e9e0;width:38px;height:38px;border-radius:50%;font-size:20px}
+.formGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}label{font-weight:800;font-size:14px;display:block;margin-bottom:5px}input,select,textarea{width:100%;border:1px solid #decfc0;border-radius:11px;padding:11px;background:#fff}textarea{min-height:85px;resize:vertical}.full{grid-column:1/-1}
+.orderItem{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid #eee}.qty{display:flex;align-items:center;gap:7px}.qty button{border:0;width:30px;height:30px;border-radius:8px;background:#eee}.total{display:flex;justify-content:space-between;font-size:20px;font-weight:900;padding:15px 0}
+.mobileNav{display:none}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(100px);background:#241b17;color:#fff;padding:12px 17px;border-radius:12px;z-index:300;transition:.3s;box-shadow:var(--shadow)}.toast.show{transform:translateX(-50%) translateY(0)}
+.admin{display:none}.admin.show{display:block}.adminTop{background:#211713;color:#fff;border-radius:20px;padding:18px;margin-bottom:18px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:15px}.stat{background:#fff;color:var(--dark);padding:14px;border-radius:14px}.stat b{font-size:25px;display:block}
+.tabs{display:flex;gap:7px;overflow:auto;margin-bottom:15px}.tab{border:0;background:#eee5dc;padding:10px 13px;border-radius:10px;font-weight:800;white-space:nowrap}.tab.active{background:var(--primary);color:#fff}.adminPanel{background:#fff;border-radius:18px;padding:16px;box-shadow:var(--shadow)}
+.adminRow{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid #eee}.adminRow:last-child{border-bottom:0}.adminActions{display:flex;gap:6px;flex-wrap:wrap}.danger{background:#fbe8e6!important;color:var(--red)!important}.success{background:#e8f6ee!important;color:var(--green)!important}.empty{text-align:center;padding:30px;color:var(--muted)}
+@media(max-width:760px){.navlinks{display:none}.mobileNav{display:flex;position:fixed;bottom:0;left:0;right:0;background:#fff;z-index:90;justify-content:space-around;padding:7px;border-top:1px solid #eadfd4}.mobileNav button{font-size:11px;padding:7px}.hero{grid-template-columns:1fr;padding-top:15px}.heroCard{min-height:230px}.grid{grid-template-columns:1fr 1fr}.about,.footerInner{grid-template-columns:1fr}.formGrid{grid-template-columns:1fr}.full{grid-column:auto}.section{padding-bottom:75px}.stats{grid-template-columns:1fr 1fr}.cardBody{padding:12px}.foodImg{height:130px;font-size:58px}}
+@media(max-width:430px){.grid{grid-template-columns:1fr}.heroText h1{font-size:45px}}
+
+.admin.theme-bordeaux .adminTop{background:linear-gradient(135deg,#5b1711,#8f2419)}
+.admin.theme-bordeaux .tab.active{background:#7a1f16}
+.admin.theme-vert .adminTop{background:linear-gradient(135deg,#14532d,#237a4b)}
+.admin.theme-vert .tab.active{background:#237a4b}
+.admin.theme-or .adminTop{background:linear-gradient(135deg,#6b4b0b,#a97816)}
+.admin.theme-or .tab.active{background:#a97816}
+.admin.theme-nuit .adminTop{background:linear-gradient(135deg,#111827,#334155)}
+.admin.theme-nuit .tab.active{background:#334155}
+.admin.theme-vert .stat,.admin.theme-or .stat,.admin.theme-nuit .stat,.admin.theme-bordeaux .stat{border-top:3px solid transparent}
+.admin.theme-vert .stat{border-top-color:#237a4b}
+.admin.theme-or .stat{border-top-color:#a97816}
+.admin.theme-nuit .stat{border-top-color:#334155}
+.admin.theme-bordeaux .stat{border-top-color:#7a1f16}
+.themeGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.themeChoice{border:2px solid #eadbca;background:#fff;border-radius:14px;padding:12px;text-align:left;font-weight:800}
+.themeChoice.active{border-color:var(--primary);box-shadow:0 0 0 2px #7a1f1620}
+.themeDot{width:30px;height:30px;border-radius:50%;display:inline-block;vertical-align:middle;margin-right:8px}
+@media(max-width:430px){.themeGrid{grid-template-columns:1fr}}
+</style>
+
+<style id="vkPhotoSizePatch">
+.foodImg{width:100%;height:175px;overflow:hidden;display:grid;place-items:center}
+.foodImg img{width:100%;height:100%;object-fit:cover;display:block}
+.adminDishThumb{width:72px;height:72px;min-width:72px;object-fit:cover;border-radius:10px;display:block}
+</style>
+
+<style id="vkHistoryPatch">
+.historyGrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:700px){.historyGrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="topbar">🇲🇱 Cuisine malienne • Commandes & réservations en ligne</div>
+<header><nav class="nav"><div class="logo"><span class="logoMark">VK</span> VAN KA RESTAU</div><div class="navlinks">
+<button onclick="go('home')">Accueil</button><button onclick="go('menu')">Menu</button><button onclick="openReservation()">Réserver</button><button onclick="openAdmin()">Gérant</button><button class="cartBtn" onclick="openCart()">🛒 Panier <span id="cartCount">0</span></button>
+</div></nav></header>
+<main id="clientApp">
+<section id="home" class="hero"><div class="heroText"><div class="badge">Restaurant malien 🇲🇱</div><h1>Les saveurs du <span>Mali</span> dans votre assiette.</h1><p>Bienvenue chez VAN KA RESTAU. Découvrez nos plats, commandez à distance ou réservez votre table en quelques secondes.</p><div class="actions"><button class="btn btnPrimary" onclick="go('menu')">🍛 Voir le menu</button><button class="btn btnGold" onclick="openReservation()">📅 Réserver une table</button></div></div><div class="heroCard"><div><b>VAN KA RESTAU</b><br>Une cuisine généreuse, authentique et chaleureuse.</div></div></section>
+<section id="menu" class="section"><div class="sectionHead"><div><h2>Notre menu</h2><div class="muted">Choisissez vos plats préférés</div></div><button class="btn btnLight" onclick="openCart()">🛒 <span id="cartCount2">0</span></button></div><div id="categories" class="categories"></div><div id="menuGrid" class="grid"></div></section>
+<section class="section"><div class="sectionHead"><div><h2>Pourquoi VAN KA ?</h2><div class="muted">Simple, bon et proche de vous.</div></div></div><div class="about">
+<div class="infoBox"><h3>🍲 Cuisine authentique</h3><p>Des recettes inspirées des saveurs maliennes, préparées avec soin.</p></div><div class="infoBox"><h3>📱 Commande facile</h3><p>Depuis votre téléphone, ajoutez vos plats, choisissez le service et envoyez votre commande.</p></div><div class="infoBox"><h3>📅 Réservation</h3><p>Réservez votre table à l'avance et évitez l'attente.</p></div><div class="infoBox"><h3>💬 Contact rapide</h3><p>Besoin d'une information ? Utilisez le bouton WhatsApp ou appelez le restaurant.</p></div>
+</div></section></main>
+<section id="adminApp" class="section admin"><div class="adminTop"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><div><small>ESPACE PROFESSIONNEL</small><h2 style="margin:4px 0">Tableau de bord</h2><span id="adminRole"></span></div><div style="display:flex;gap:7px;align-items:center;flex-wrap:wrap"><button class="btn btnLight managerOnly" id="themeBtn" style="display:none" onclick="openThemePicker()">🎨 Thème</button><button class="btn btnLight managerOnly" id="resetDashboardBtn" style="display:none" onclick="resetManagerDashboard()">↻ Réinitialiser</button><button class="btn btnGold" onclick="logout()">Déconnexion</button></div></div><div class="stats">
+<div class="stat"><small>Commandes</small><b id="sOrders">0</b></div><div class="stat"><small>Réservations</small><b id="sBookings">0</b></div><div class="stat"><small>Plats</small><b id="sDishes">0</b></div><div class="stat"><small>Employés</small><b id="sStaff">0</b></div>
+</div></div>
+<div class="tabs"><button class="tab active" data-tab="orders" onclick="adminTab('orders')">📦 Commandes</button><button class="tab" data-tab="bookings" onclick="adminTab('bookings')">📅 Réservations</button><button class="tab" data-tab="dishes" onclick="adminTab('dishes')">🍛 Menu</button><button class="tab managerOnly" data-tab="staff" onclick="adminTab('staff')">👥 Employés</button><button class="tab managerOnly" data-tab="history" onclick="adminTab('history')">🗂️ Historique</button></div><div id="adminContent" class="adminPanel"></div></section>
+<footer><div class="footerInner"><div><h2>VAN KA RESTAU 🇲🇱</h2><p>Les saveurs du Mali dans votre assiette.</p></div><div><b>Horaires</b><p>Lun–Dim<br>11h00 — 23h00</p></div><div><b>Contact</b><p>📞 +223 XX XX XX XX<br>💬 WhatsApp</p></div></div></footer>
+<div class="mobileNav"><button onclick="go('home')">🏠<br>Accueil</button><button onclick="go('menu')">🍛<br>Menu</button><button onclick="openReservation()">📅<br>Réserver</button><button onclick="openCart()">🛒<br>Panier</button><button onclick="openAdmin()">⚙️<br>Gérant</button></div>
+<div id="cartModal" class="modal" onclick="if(event.target===this)closeModal('cartModal')"><div class="modalBox"><div class="modalHead"><h2>🛒 Votre panier</h2><button class="close" onclick="closeModal('cartModal')">×</button></div><div id="cartItems"></div><div class="total"><span>Total</span><span id="cartTotal">0 FCFA</span></div><button class="btn btnPrimary" style="width:100%" onclick="openCheckout()">Continuer</button></div></div>
+<div id="checkoutModal" class="modal" onclick="if(event.target===this)closeModal('checkoutModal')"><div class="modalBox"><div class="modalHead"><h2>📦 Finaliser</h2><button class="close" onclick="closeModal('checkoutModal')">×</button></div><form onsubmit="submitOrder(event)" class="formGrid"><div><label>Nom *</label><input id="cName" required></div><div><label>Téléphone *</label><input id="cPhone" required type="tel"></div><div><label>Type *</label><select id="cType"><option>À emporter</option><option>Livraison</option><option>Sur place</option></select></div><div><label>Mode de paiement</label><select id="cPay"><option>À la livraison / sur place</option><option>Espèces</option><option>Orange Money</option><option>Moov Money</option></select></div><div class="full"><label>Adresse / remarque</label><textarea id="cNote" placeholder="Adresse de livraison ou précision..."></textarea></div><div class="full"><button class="btn btnPrimary" style="width:100%">✅ Envoyer la commande</button></div></form></div></div>
+<div id="reservationModal" class="modal" onclick="if(event.target===this)closeModal('reservationModal')"><div class="modalBox"><div class="modalHead"><h2>📅 Réserver une table</h2><button class="close" onclick="closeModal('reservationModal')">×</button></div><form onsubmit="submitBooking(event)" class="formGrid"><div><label>Nom *</label><input id="bName" required></div><div><label>Téléphone *</label><input id="bPhone" required type="tel"></div><div><label>Date *</label><input id="bDate" required type="date"></div><div><label>Heure *</label><input id="bTime" required type="time"></div><div><label>Nombre de personnes *</label><input id="bPeople" required type="number" min="1" max="30" value="2"></div><div class="full"><label>Message</label><textarea id="bNote"></textarea></div><div class="full"><button class="btn btnGold" style="width:100%">📅 Confirmer la réservation</button></div></form></div></div>
+<div id="loginModal" class="modal" onclick="if(event.target===this)closeModal('loginModal')"><div class="modalBox"><div class="modalHead"><h2>🔐 Connexion</h2><button class="close" onclick="closeModal('loginModal')">×</button></div><p class="muted">Prototype local : les comptes sont stockés uniquement dans ce navigateur.</p><form onsubmit="login(event)"><label>Identifiant</label><input id="loginUser" required value="gerant"><label style="margin-top:10px">Mot de passe</label><input id="loginPass" required type="password" value="van123"><button class="btn btnPrimary" style="width:100%;margin-top:15px">Se connecter</button></form><div class="infoBox" style="margin-top:15px;padding:12px"><b>Démo :</b> gerant / van123</div></div></div>
+<div id="toast" class="toast"></div>
+<script>
+const defaultDishes=[
+{id:1,name:"Tigadèguèna",cat:"Plats maliens",price:3500,emoji:"🍲",desc:"Sauce arachide malienne, généreuse et parfumée.",available:true},
+{id:2,name:"Riz au gras",cat:"Plats maliens",price:3000,emoji:"🍚",desc:"Riz savoureux accompagné de viande et légumes.",available:true},
+{id:3,name:"Tô & sauce",cat:"Plats maliens",price:2500,emoji:"🥘",desc:"Tô traditionnel avec une sauce au choix.",available:true},
+{id:4,name:"Poulet braisé",cat:"Grillades",price:5000,emoji:"🍗",desc:"Poulet grillé aux épices, servi avec accompagnement.",available:true},
+{id:5,name:"Brochettes",cat:"Grillades",price:4000,emoji:"🍢",desc:"Brochettes de viande grillée.",available:true},
+{id:6,name:"Attiéké",cat:"Riz et accompagnements",price:2500,emoji:"🥗",desc:"Accompagnement frais et savoureux.",available:true},
+{id:7,name:"Jus de bissap",cat:"Boissons",price:1000,emoji:"🧃",desc:"Bissap frais maison.",available:true},
+{id:8,name:"Gingembre",cat:"Boissons",price:1000,emoji:"🥤",desc:"Jus de gingembre frais.",available:true},
+{id:9,name:"Salade de fruits",cat:"Desserts",price:1500,emoji:"🍉",desc:"Fruits frais de saison.",available:true}];
+let dishes=load("vk_dishes",defaultDishes),orders=load("vk_orders",[]),bookings=load("vk_bookings",[]),orderHistory=load("vk_order_history",[]),bookingHistory=load("vk_booking_history",[]),staff=load("vk_staff",[{id:1,name:"Gérant principal",user:"gerant",role:"Gérant",active:true},{id:2,name:"Employé Démo",user:"employe",role:"Employé",active:true}]),cart=load("vk_cart",[]),currentUser=null,currentCat="Tous",adminCurrent="orders",adminTheme=load("vk_admin_theme","bordeaux");
+function load(k,f){try{return JSON.parse(localStorage.getItem(k))??f}catch(e){return f}}function save(k,v){localStorage.setItem(k,JSON.stringify(v))}function money(n){return new Intl.NumberFormat("fr-FR").format(n)+" FCFA"}function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}function toast(msg){let t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2600)}function go(id){document.getElementById(id)?.scrollIntoView({behavior:"smooth"});if(id==="menu")renderMenu()}function openModal(id){document.getElementById(id).classList.add("show")}function closeModal(id){document.getElementById(id).classList.remove("show")}function openCart(){renderCart();openModal("cartModal")}function openReservation(){openModal("reservationModal")}function openAdmin(){if(currentUser)showAdmin();else openModal("loginModal")}
+function renderCategories(){const cats=["Tous",...new Set(dishes.map(d=>d.cat))];document.getElementById("categories").innerHTML=cats.map(c=>`<button class="chip ${currentCat===c?"active":""}" onclick="currentCat='${esc(c)}';renderCategories();renderMenu()">${esc(c)}</button>`).join("")}
+function renderMenu(){renderCategories();const list=dishes.filter(d=>d.available&&(currentCat==="Tous"||d.cat===currentCat));document.getElementById("menuGrid").innerHTML=list.length?list.map(d=>`<article class="card"><div class="foodImg">${d.photo?`<img src="${esc(d.photo)}" alt="${esc(d.name)}" loading="lazy">`:(d.emoji||"🍽️")}</div><div class="cardBody"><span class="badge">${esc(d.cat)}</span><h3>${esc(d.name)}</h3><p class="muted">${esc(d.desc)}</p><div class="cardBottom"><span class="price">${money(d.price)}</span><button class="smallBtn" onclick="addCart(${d.id})">+ Ajouter</button></div></div></article>`).join(""):`<div class="empty" style="grid-column:1/-1">Aucun plat disponible dans cette catégorie.</div>`}
+function addCart(id){let d=dishes.find(x=>x.id===id);if(!d)return;let item=cart.find(x=>x.id===id);item?item.qty++:cart.push({id,qty:1});save("vk_cart",cart);updateCart();toast(d.name+" ajouté au panier")}
+function updateCart(){let n=cart.reduce((s,x)=>s+x.qty,0);document.getElementById("cartCount").textContent=n;document.getElementById("cartCount2").textContent=n}
+function cartTotal(){return cart.reduce((s,x)=>{let d=dishes.find(d=>d.id===x.id);return s+(d?d.price*x.qty:0)},0)}
+function renderCart(){const box=document.getElementById("cartItems");if(!cart.length)box.innerHTML='<div class="empty">Votre panier est vide.</div>';else box.innerHTML=cart.map(x=>{let d=dishes.find(z=>z.id===x.id);return d?`<div class="orderItem"><div><b>${esc(d.name)}</b><br><span class="muted">${money(d.price)}</span></div><div class="qty"><button onclick="changeQty(${d.id},-1)">−</button><b>${x.qty}</b><button onclick="changeQty(${d.id},1)">+</button><button class="close" onclick="removeCart(${d.id})">×</button></div></div>`:""}).join("");document.getElementById("cartTotal").textContent=money(cartTotal())}
+function changeQty(id,n){let x=cart.find(i=>i.id===id);if(!x)return;x.qty+=n;if(x.qty<=0)cart=cart.filter(i=>i.id!==id);save("vk_cart",cart);renderCart();updateCart()}function removeCart(id){cart=cart.filter(i=>i.id!==id);save("vk_cart",cart);renderCart();updateCart()}function openCheckout(){if(!cart.length)return toast("Ajoutez au moins un plat.");closeModal("cartModal");openModal("checkoutModal")}
+function submitOrder(e){e.preventDefault();let o={id:"VK-"+Date.now().toString().slice(-6),date:new Date().toLocaleString("fr-FR"),name:cName.value,phone:cPhone.value,type:cType.value,pay:cPay.value,note:cNote.value,items:cart.map(x=>({id:x.id,qty:x.qty})),total:cartTotal(),status:"Nouvelle"};orders.unshift(o);save("vk_orders",orders);cart=[];save("vk_cart",cart);updateCart();closeModal("checkoutModal");e.target.reset();toast("Commande "+o.id+" envoyée avec succès !")}
+function submitBooking(e){e.preventDefault();let b={id:"RES-"+Date.now().toString().slice(-5),name:bName.value,phone:bPhone.value,date:bDate.value,time:bTime.value,people:bPeople.value,note:bNote.value,status:"En attente"};bookings.unshift(b);save("vk_bookings",bookings);closeModal("reservationModal");e.target.reset();toast("Réservation "+b.id+" enregistrée !")}
+function login(e){e.preventDefault();let u=loginUser.value,p=loginPass.value,s=staff.find(x=>x.user===u&&x.active);if(s&&((s.role==="Gérant"&&p==="van123")||(s.role==="Employé"&&p==="emp123"))){currentUser=s;closeModal("loginModal");showAdmin();toast("Bienvenue "+s.name)}else toast("Identifiants incorrects")}
+function showAdmin(){document.getElementById("clientApp").style.display="none";document.getElementById("adminApp").classList.add("show");applyAdminTheme();document.querySelector("footer").style.display="none";document.getElementById("adminRole").textContent=currentUser.role+" • "+currentUser.name;document.querySelectorAll(".managerOnly").forEach(x=>x.style.display=currentUser.role==="Gérant"?"block":"none");if(document.getElementById("themeBtn"))document.getElementById("themeBtn").style.display=currentUser.role==="Gérant"?"inline-block":"none";updateStats();adminTab(adminCurrent);window.scrollTo({top:0,behavior:"smooth"})}
+
+function applyAdminTheme(){const a=document.getElementById("adminApp");a.classList.remove("theme-bordeaux","theme-vert","theme-or","theme-nuit");a.classList.add("theme-"+adminTheme)}
+function openThemePicker(){if(!currentUser||currentUser.role!=="Gérant")return;const names={bordeaux:"Bordeaux",vert:"Vert Mali",or:"Or & Sable",nuit:"Nuit élégante"};const dots={bordeaux:"#7a1f16",vert:"#237a4b",or:"#a97816",nuit:"#334155"};const box=document.createElement("div");box.id="themeModal";box.className="modal show";box.innerHTML=`<div class="modalBox"><div class="modalHead"><h2>🎨 Thème du dashboard</h2><button class="close" onclick="document.getElementById('themeModal').remove()">×</button></div><p class="muted">Le gérant peut choisir l'apparence de son espace de gestion.</p><div class="themeGrid">${Object.keys(names).map(k=>`<button class="themeChoice ${adminTheme===k?"active":""}" onclick="setAdminTheme('${k}')"><span class="themeDot" style="background:${dots[k]}"></span>${names[k]}</button>`).join("")}</div></div>`;document.body.appendChild(box)}
+
+function resetManagerDashboard(){
+  if(!currentUser || currentUser.role!=="Gérant") return;
+  if(!confirm("Réinitialiser l’affichage du tableau de bord ?\n\nCela remet le thème et l’onglet du dashboard par défaut. Les plats, commandes, réservations et employés ne seront PAS supprimés.")) return;
+  adminTheme="bordeaux";
+  save("vk_admin_theme",adminTheme);
+  try{localStorage.removeItem("vk_dashboard_theme")}catch(e){}
+  applyAdminTheme();
+  adminCurrent="orders";
+  document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x.dataset.tab==="orders"));
+  if(typeof updateStats==="function") updateStats();
+  if(typeof renderAdminOrders==="function") renderAdminOrders();
+  document.getElementById("themeModal")?.remove();
+  toast("Tableau de bord réinitialisé");
+}
+
+function setAdminTheme(t){if(!currentUser||currentUser.role!=="Gérant")return;adminTheme=t;save("vk_admin_theme",t);applyAdminTheme();document.getElementById("themeModal")?.remove();toast("Thème du dashboard mis à jour")}
+
+function logout(){currentUser=null;document.getElementById("adminApp").classList.remove("show");document.getElementById("clientApp").style.display="block";document.querySelector("footer").style.display="block";go("home")}
+function updateStats(){sOrders.textContent=orders.length;sBookings.textContent=bookings.length;sDishes.textContent=dishes.filter(x=>x.available).length;sStaff.textContent=staff.filter(x=>x.active).length}
+function adminTab(tab){adminCurrent=tab;document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x.dataset.tab===tab));if(tab==="orders")renderAdminOrders();if(tab==="bookings")renderAdminBookings();if(tab==="dishes")renderAdminDishes();if(tab==="staff")renderAdminStaff();if(tab==="history")renderAdminHistory()}
+function statusClass(s){return s==="Livrée"||s==="Prête"?"success":s==="Annulée"?"danger":""}
+function renderAdminOrders(){let c=document.getElementById("adminContent");c.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><h3>📦 Commandes (${orders.length})</h3>${currentUser&&currentUser.role==="Gérant"?`<button class="btn btnLight" onclick="archiveWeeklyData()">🗂️ Archiver la semaine</button>`:""}</div>${orders.length?orders.map(o=>`<div class="adminRow"><div><b>${esc(o.id)} — ${esc(o.name)}</b><br><span class="muted">${esc(o.phone)} • ${esc(o.type)} • ${money(o.total)}</span><br><small>${o.date}</small></div><div class="adminActions"><span class="btn ${statusClass(o.status)}">${esc(o.status)}</span><select onchange="setOrderStatus('${o.id}',this.value)">${["Nouvelle","Confirmée","En préparation","Prête","Livrée","Annulée"].map(s=>`<option ${s===o.status?"selected":""}>${s}</option>`).join("")}</select><button class="btn btnLight" onclick="viewOrder('${o.id}')">Détails</button></div></div>`).join(""):'<div class="empty">Aucune commande.</div>'}`}
+function viewOrder(id){let o=orders.find(x=>x.id===id);if(!o)return;let names=o.items.map(x=>{let d=dishes.find(z=>z.id===x.id);return `${x.qty} × ${d?d.name:"Plat supprimé"}`}).join("\n");alert(`Commande ${o.id}\nClient: ${o.name}\nTéléphone: ${o.phone}\nType: ${o.type}\n\n${names}\n\nTotal: ${money(o.total)}\nRemarque: ${o.note||"—"}`)}
+function setOrderStatus(id,s){let o=orders.find(x=>x.id===id);if(o){o.status=s;save("vk_orders",orders);renderAdminOrders();toast("Statut mis à jour")}}
+function renderAdminBookings(){document.getElementById("adminContent").innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><h3>📅 Réservations (${bookings.length})</h3>${currentUser&&currentUser.role==="Gérant"?`<button class="btn btnLight" onclick="archiveWeeklyData()">🗂️ Archiver la semaine</button>`:""}</div>${bookings.length?bookings.map(b=>`<div class="adminRow"><div><b>${esc(b.id)} — ${esc(b.name)}</b><br><span class="muted">${esc(b.date)} à ${esc(b.time)} • ${esc(b.people)} personne(s)</span><br>📞 ${esc(b.phone)} ${b.note?"• "+esc(b.note):""}</div><div class="adminActions"><select onchange="setBookingStatus('${b.id}',this.value)">${["En attente","Confirmée","Terminée","Annulée"].map(s=>`<option ${s===b.status?"selected":""}>${s}</option>`).join("")}</select></div></div>`).join(""):'<div class="empty">Aucune réservation.</div>'}`}
+function setBookingStatus(id,s){let b=bookings.find(x=>x.id===id);if(b){b.status=s;save("vk_bookings",bookings);renderAdminBookings();toast("Réservation mise à jour")}}
+
+function weekLabel(d=new Date()){
+  const date=new Date(d);
+  const day=date.getDay()||7;
+  const monday=new Date(date);
+  monday.setDate(date.getDate()-day+1);
+  const sunday=new Date(monday);
+  sunday.setDate(monday.getDate()+6);
+  const f=x=>x.toLocaleDateString("fr-FR");
+  return `${f(monday)} → ${f(sunday)}`;
+}
+function archiveWeeklyData(){
+  if(!currentUser||currentUser.role!=="Gérant") return;
+  if(!orders.length&&!bookings.length) return toast("Il n’y a rien à archiver.");
+  const label=weekLabel();
+  if(!confirm(`Archiver les ${orders.length} commande(s) et ${bookings.length} réservation(s) actuelles ?\n\nElles seront retirées des listes actives, mais conservées dans l’historique avec le client, la date et les détails.`)) return;
+  const archivedAt=new Date().toLocaleString("fr-FR");
+  orders.forEach(o=>orderHistory.unshift({...o,archivedAt,archiveWeek:label}));
+  bookings.forEach(b=>bookingHistory.unshift({...b,archivedAt,archiveWeek:label}));
+  save("vk_order_history",orderHistory);
+  save("vk_booking_history",bookingHistory);
+  orders=[]; bookings=[];
+  save("vk_orders",orders); save("vk_bookings",bookings);
+  updateStats();
+  adminTab(adminCurrent==="bookings"?"bookings":"orders");
+  toast("Commandes et réservations archivées.");
+}
+function renderAdminHistory(){
+  if(!currentUser||currentUser.role!=="Gérant") return;
+  const c=document.getElementById("adminContent");
+  c.innerHTML=`
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+      <h3>🗂️ Historique</h3>
+      <button class="btn btnLight" onclick="adminTab('orders')">← Retour</button>
+    </div>
+    <p class="muted">Les archives conservent le client, le téléphone, la date, le contenu de la commande ou de la réservation et la date d’archivage.</p>
+    <div class="historyGrid">
+      <div>
+        <h4>📦 Commandes archivées (${orderHistory.length})</h4>
+        ${orderHistory.length?orderHistory.map(o=>`
+          <div class="adminRow">
+            <div><b>${esc(o.id)} — ${esc(o.name)}</b><br>
+            <span class="muted">📞 ${esc(o.phone)} • ${money(o.total)}</span><br>
+            <small>Commande : ${esc(o.date)} • Archivée : ${esc(o.archivedAt||"—")}</small></div>
+            <div class="adminActions"><button class="btn btnLight" onclick="viewHistoryOrder('${o.id}')">Détails</button></div>
+          </div>`).join(""):'<div class="empty">Aucune commande archivée.</div>'}
+      </div>
+      <div>
+        <h4>📅 Réservations archivées (${bookingHistory.length})</h4>
+        ${bookingHistory.length?bookingHistory.map(b=>`
+          <div class="adminRow">
+            <div><b>${esc(b.id)} — ${esc(b.name)}</b><br>
+            <span class="muted">📞 ${esc(b.phone)} • ${esc(b.date)} à ${esc(b.time)} • ${esc(b.people)} personne(s)</span><br>
+            <small>Archivée : ${esc(b.archivedAt||"—")}</small></div>
+          </div>`).join(""):'<div class="empty">Aucune réservation archivée.</div>'}
+      </div>
+    </div>`;
+}
+function viewHistoryOrder(id){
+  const o=orderHistory.find(x=>x.id===id); if(!o)return;
+  const names=(o.items||[]).map(x=>{const d=dishes.find(z=>z.id===x.id);return `${x.qty} × ${d?d.name:"Plat supprimé"}`}).join("\n");
+  alert(`Commande ${o.id}\nClient: ${o.name}\nTéléphone: ${o.phone}\nDate: ${o.date}\nType: ${o.type}\n\n${names||"Détails non disponibles"}\n\nTotal: ${money(o.total)}\nRemarque: ${o.note||"—"}\nArchivée: ${o.archivedAt||"—"}`);
+}
+
+function renderAdminDishes(){document.getElementById("adminContent").innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><h3>🍛 Gestion du menu</h3><button class="btn btnPrimary" onclick="dishForm()">+ Nouveau plat</button></div><div id="dishList">${dishes.map(d=>`<div class="adminRow"><div class="adminDishInfo">${d.photo?`<img class="adminDishThumb" src="${esc(d.photo)}" alt="${esc(d.name)}">`:`<div class="adminDishThumb" style="display:grid;place-items:center;font-size:34px">${d.emoji||"🍽️"}</div>`}<div><b>${esc(d.name)}</b><br><span class="muted">${esc(d.cat)} • ${money(d.price)} • ${d.available?"Disponible":"Indisponible"}</span></div></div><div class="adminActions"><button class="btn btnLight" onclick="dishForm(${d.id})">Modifier</button><button class="btn ${d.available?"danger":"success"}" onclick="toggleDish(${d.id})">${d.available?"Désactiver":"Activer"}</button><button class="btn danger" onclick="deleteDish(${d.id})">Supprimer</button></div></div>`).join("")}</div>`}
+
+function dishForm(id=null){let d=id?dishes.find(x=>x.id===id):{name:"",cat:"Plats maliens",price:0,emoji:"🍽️",photo:"",desc:"",available:true};let html=`<div class="modal show" id="tempDish"><div class="modalBox"><div class="modalHead"><h2>${id?"Modifier":"Ajouter"} un plat</h2><button class="close" onclick="document.getElementById('tempDish').remove()">×</button></div><form onsubmit="saveDish(event,${id||"null"})" class="formGrid"><div><label>Nom</label><input id="dName" required value="${esc(d.name)}"></div><div><label>Prix FCFA</label><input id="dPrice" type="number" min="0" required value="${d.price}"></div><div><label>Catégorie</label><input id="dCat" required value="${esc(d.cat)}"></div><div class="full"><label>Photo du plat</label><input id="dPhoto" type="file" accept="image/jpeg,image/png,image/webp" onchange="previewDishPhoto(event)"><div style="display:flex;gap:12px;align-items:center;margin-top:10px">${d.photo?`<img id="dishPreview" class="dishPhotoPreview" src="${esc(d.photo)}" alt="Aperçu">`:`<div id="dishPreview" class="dishPhotoPreview" style="display:grid;place-items:center;font-size:13px;text-align:center;padding:8px">Aucune photo</div>`}<div class="muted" style="font-size:13px">Choisis une vraie photo depuis la galerie de ton téléphone.<br>JPG, PNG ou WebP.</div></div></div><div class="full"><label>Description</label><textarea id="dDesc">${esc(d.desc)}</textarea></div><div class="full"><button class="btn btnPrimary" style="width:100%">Enregistrer</button></div></form></div></div>`;document.body.insertAdjacentHTML("beforeend",html)}
+
+function previewDishPhoto(e){const f=e.target.files&&e.target.files[0];if(!f)return;if(!f.type.startsWith("image/"))return toast("Choisis une image.");if(f.size>12*1024*1024)return toast("Photo trop lourde : maximum 12 Mo.");const r=new FileReader();r.onload=()=>{const p=document.getElementById("dishPreview");if(p)p.outerHTML=`<img id="dishPreview" class="dishPhotoPreview" src="${r.result}" alt="Aperçu">`};r.readAsDataURL(f)}
+
+function compressDishPhoto(file,done){const r=new FileReader();r.onload=()=>{const img=new Image();img.onload=()=>{const max=900;let w=img.naturalWidth,h=img.naturalHeight;if(w>max||h>max){const scale=Math.min(max/w,max/h);w=Math.round(w*scale);h=Math.round(h*scale)}const c=document.createElement("canvas");c.width=w;c.height=h;const ctx=c.getContext("2d");ctx.fillStyle="#fff";ctx.fillRect(0,0,w,h);ctx.drawImage(img,0,0,w,h);done(c.toDataURL("image/jpeg",0.78))};img.onerror=()=>toast("Impossible de lire cette photo.");img.src=r.result};r.onerror=()=>toast("Impossible de lire la photo.");r.readAsDataURL(file)}
+
+function saveDish(e,id){e.preventDefault();const file=document.getElementById("dPhoto")?.files?.[0];const finish=(photo)=>{let old=id?dishes.find(d=>d.id===id):null;let x={id:id||Date.now(),name:dName.value.trim(),price:Number(dPrice.value),cat:dCat.value.trim(),emoji:"🍽️",photo:photo||"",desc:dDesc.value.trim(),available:old?old.available:true};if(id&&old)Object.assign(old,x);else dishes.push(x);try{save("vk_dishes",dishes)}catch(err){if(!id)dishes.pop();toast("Stockage plein. Réduis la taille des photos ou supprime une ancienne photo.");return}document.getElementById("tempDish").remove();renderAdminDishes();updateStats();renderMenu();toast("Plat enregistré")};if(file){compressDishPhoto(file,finish)}else{finish(id&&dishes.find(d=>d.id===id)?.photo||"")}}
+
+function renderAdminStaff(){if(currentUser.role!=="Gérant")return;document.getElementById("adminContent").innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><h3>👥 Gestion des employés</h3><button class="btn btnPrimary" onclick="staffForm()">+ Ajouter</button></div>${staff.map(s=>`<div class="adminRow"><div><b>${esc(s.name)}</b><br><span class="muted">@${esc(s.user)} • ${esc(s.role)} • ${s.active?"Actif":"Désactivé"}</span></div><div class="adminActions"><button class="btn ${s.active?"danger":"success"}" onclick="toggleStaff(${s.id})">${s.active?"Désactiver":"Activer"}</button>${s.id!==1?`<button class="btn danger" onclick="deleteStaff(${s.id})">Supprimer</button>`:""}</div></div>`).join("")}`}
+function staffForm(){let html=`<div class="modal show" id="tempStaff"><div class="modalBox"><div class="modalHead"><h2>Ajouter un employé</h2><button class="close" onclick="document.getElementById('tempStaff').remove()">×</button></div><form onsubmit="saveStaff(event)"><label>Nom</label><input id="stName" required><label style="margin-top:10px">Identifiant</label><input id="stUser" required><label style="margin-top:10px">Mot de passe</label><input id="stPass" required type="password"><label style="margin-top:10px">Rôle</label><select id="stRole"><option>Employé</option><option>Gérant</option></select><button class="btn btnPrimary" style="width:100%;margin-top:15px">Créer le compte</button></form></div></div>`;document.body.insertAdjacentHTML("beforeend",html)}
+function saveStaff(e){e.preventDefault();let s={id:Date.now(),name:stName.value,user:stUser.value,role:stRole.value,active:true};if(staff.some(x=>x.user===s.user))return toast("Cet identifiant existe déjà");staff.push(s);save("vk_staff",staff);document.getElementById("tempStaff").remove();renderAdminStaff();updateStats();toast("Compte employé créé")}
+function toggleStaff(id){let s=staff.find(x=>x.id===id);if(s){s.active=!s.active;save("vk_staff",staff);renderAdminStaff();updateStats()}}
+function deleteStaff(id){if(!confirm("Supprimer ce compte employé ?"))return;staff=staff.filter(x=>x.id!==id);save("vk_staff",staff);renderAdminStaff();updateStats();toast("Compte supprimé")}
+renderMenu();updateCart();
+</script>
+
+<script>
+/* V2 PATCH: reliable manager actions + dashboard theme selector */
+(function(){
+  const VK_THEME_KEY = "vk_dashboard_theme";
+
+  function applyDashboardTheme(theme){
+    document.documentElement.dataset.dashboardTheme = theme || "bordeaux";
+    localStorage.setItem(VK_THEME_KEY, theme || "bordeaux");
+  }
+
+  function ensureThemeStyles(){
+    if(document.getElementById("vkThemePatch")) return;
+    const s=document.createElement("style");
+    s.id="vkThemePatch";
+    s.textContent=`
+      html[data-dashboard-theme="bordeaux"] .admin{--theme:#7a1f2b;--theme2:#a83b4b}
+      html[data-dashboard-theme="vert"] .admin{--theme:#087f5b;--theme2:#16a085}
+      html[data-dashboard-theme="or"] .admin{--theme:#b8860b;--theme2:#d4a017}
+      html[data-dashboard-theme="nuit"] .admin{--theme:#273449;--theme2:#4b6584}
+      .vk-theme-box{margin:12px 0;padding:14px;border:1px solid #ddd;border-radius:14px;background:#fff}
+      .vk-theme-box label{display:block;font-weight:700;margin-bottom:7px}
+      .vk-theme-box select{width:100%;padding:10px;border-radius:10px;border:1px solid #ccc}
+      .admin .vk-theme-box{border-left:5px solid var(--theme,#7a1f2b)}
+      .adminDishActions button{min-width:88px}
+    `;
+    document.head.appendChild(s);
+  }
+
+  function addThemeBox(){
+    if(document.getElementById("vkThemeBox")) return;
+    const admin = document.querySelector(".admin");
+    if(!admin) return;
+    ensureThemeStyles();
+    const box=document.createElement("div");
+    box.id="vkThemeBox";
+    box.className="vk-theme-box";
+    box.innerHTML=`
+      <label>🎨 Thème du dashboard</label>
+      <select id="vkThemeSelect">
+        <option value="bordeaux">Bordeaux</option>
+        <option value="vert">Vert Mali</option>
+        <option value="or">Or & Sable</option>
+        <option value="nuit">Nuit élégante</option>
+      </select>`;
+    admin.insertBefore(box, admin.firstChild);
+    const saved=localStorage.getItem(VK_THEME_KEY)||"bordeaux";
+    box.querySelector("select").value=saved;
+    applyDashboardTheme(saved);
+    box.querySelector("select").addEventListener("change",e=>applyDashboardTheme(e.target.value));
+  }
+
+  function patchButtons(){
+    document.addEventListener("click", function(e){
+      const btn=e.target.closest("[data-vk-action]");
+      if(!btn) return;
+      const action=btn.dataset.vkAction;
+      const id=btn.dataset.vkId;
+      if(!id) return;
+      e.preventDefault();
+      e.stopPropagation();
+
+      // Use the existing global dish array when available.
+      if(!Array.isArray(window.dishes)) return;
+
+      const dish=window.dishes.find(d=>String(d.id)===String(id));
+      if(!dish) return;
+
+      if(action==="toggle"){
+        dish.active = dish.active === false;
+        if(typeof window.save === "function") window.save("vk_dishes",window.dishes);
+        if(typeof window.renderMenu === "function") window.renderMenu();
+        if(typeof window.renderAdminDishes === "function") window.renderAdminDishes();
+        alert(dish.active ? "Plat activé." : "Plat désactivé.");
+      }
+
+      if(action==="delete"){
+        if(!confirm("Supprimer définitivement ce plat ?")) return;
+        window.dishes = window.dishes.filter(d=>String(d.id)!==String(id));
+        if(typeof window.save === "function") window.save("vk_dishes",window.dishes);
+        if(typeof window.renderMenu === "function") window.renderMenu();
+        if(typeof window.renderAdminDishes === "function") window.renderAdminDishes();
+        alert("Plat supprimé.");
+      }
+    }, true);
+  }
+
+  function patchDishRows(){
+    // Rebuild action buttons after each admin render, without touching the rest of V2.
+    const rows=document.querySelectorAll("[data-dish-id]");
+    rows.forEach(row=>{
+      const id=row.getAttribute("data-dish-id");
+      if(!id || row.dataset.vkPatched==="1") return;
+      row.dataset.vkPatched="1";
+      const old=row.querySelectorAll("button");
+      old.forEach(b=>{
+        const txt=(b.textContent||"").toLowerCase();
+        if(txt.includes("désactiv") || txt.includes("desactiv") || txt.includes("activ")){
+          b.type="button";
+          b.dataset.vkAction="toggle";
+          b.dataset.vkId=id;
+        }
+        if(txt.includes("supprim") || txt.includes("delete")){
+          b.type="button";
+          b.dataset.vkAction="delete";
+          b.dataset.vkId=id;
+        }
+      });
+    });
+  }
+
+  // Observe admin rerenders.
+  const obs=new MutationObserver(()=>{ addThemeBox(); patchDishRows(); });
+  obs.observe(document.documentElement,{childList:true,subtree:true});
+
+  window.addEventListener("DOMContentLoaded",()=>{
+    ensureThemeStyles();
+    addThemeBox();
+    patchButtons();
+    patchDishRows();
+    applyDashboardTheme(localStorage.getItem(VK_THEME_KEY)||"bordeaux");
+  });
+})();
+</script>
+
+</body>
+</html>
